@@ -5,15 +5,15 @@ services:
     ports:
       - "5173:5173"
     build:
-      context: ./platform_frontend
+      context: ./frontend
       dockerfile: Dockerfile.dev
     develop:
       watch:
-        - path: ./platform_frontend/package.json
+        - path: ./frontend/package.json
           action: rebuild
-        - path: ./platform_frontend/package-lock.json
+        - path: ./frontend/package-lock.json
           action: rebuild
-        - path: ./platform_frontend
+        - path: ./frontend
           target: /app
           action: sync
 
@@ -21,14 +21,14 @@ services:
     image: platform_backend_dev:0.0.1
     container_name: container_platform_backend_dev
     build:
-      context: ./platform_backend
+      context: ./backend
       dockerfile: Dockerfile.dev
     develop:
       watch:
-        - path: ./platform_backend/go.mod
+        - path: ./backend/go.mod
           action: rebuild
-        - path: ./platform_backend/go.sum
+        - path: ./backend/go.sum
           action: rebuild
-        - path: ./platform_backend
+        - path: ./backend
           target: /app
           action: sync

@@ -18,6 +18,8 @@
 /backend/*.so
 /backend/*.dylib
 
+/backend/tmp
+
 # Test binary, built with `go test -c`
 /backend/*.test
 
