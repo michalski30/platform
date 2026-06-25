@@ -1,0 +1,16 @@
+services:
+  frontend:
+    # image: michalski30/platform_frontend_prod:0.0.1
+    image: michalski30/platform_frontend_prod:${IMAGE_TAG:-latest}
+    container_name: platform_frontend_prod
+
+    ports: 
+      - "8081:80"
+    restart: always
+
+  backend:
+    # image: michalski30/platform_backend_prod:0.0.1
+    image: michalski30/platform_backend_prod:${IMAGE_TAG:-latest}
+    container_name: platform_backend_prod
+    
+    restart: always

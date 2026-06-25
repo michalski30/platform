@@ -1,0 +1,44 @@
+services:
+  service_frontend_dev:
+    depends_on:
+      - service_backend_dev
+    image: platform_frontend_dev:0.0.1
+    container_name: container_platform_frontend_dev
+    ports:
+      - "5173:5173"      
+    environment:
+      API_URL: "http://${API_HOST_IP}:8080"
+
+  service_backend_dev:
+    depends_on:
+      - service_db_postgres_dev
+    image: platform_backend_dev:0.0.1
+    container_name: container_platform_backend_dev
+    ports:
+      - "8080:8080"
+    environment:
+    - DB_SOURCE=postgresql://root:secret@postgres:5432/platform?sslmode=disable
+
+  service_db_postgres_dev:
+    image: postgres:12-alpine
+    container_name: container_platform_db_postgres_dev
+    ports:
+      - "5432:5432"
+    # data is stored on the computer and not within the container, when container starts, it mounts the data
+    volumes:
+      - data-volume:/var/lib/postgresql/data # allows us to persist the relevent data; Volume will be mounted here.
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    # healthcheck:
+    #   test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+    #   interval: 10s
+    #   retries: 5
+    #   start_period: 30s
+    #   timeout: 10s
+
+volumes:
+  data-volume:
+
+# data is stored on the host coumputer and not within the container. When the container start, it mounts the persisted data within the container.

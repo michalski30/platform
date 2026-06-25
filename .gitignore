@@ -1,32 +1,91 @@
+# MAIN
+
+# env file
+.env
+
+
+# -------------------------------------------------------------------------------------------------------
+
+# BACKEND
+
 # If you prefer the allow list template instead of the deny list, see community template:
 # https://github.com/github/gitignore/blob/main/community/Golang/Go.AllowList.gitignore
 #
 # Binaries for programs and plugins
-*.exe
-*.exe~
-*.dll
-*.so
-*.dylib
+/backend/*.exe
+/backend/*.exe~
+/backend/*.dll
+/backend/*.so
+/backend/*.dylib
 
 # Test binary, built with `go test -c`
-*.test
+/backend/*.test
 
 # Code coverage profiles and other test artifacts
-*.out
-coverage.*
-*.coverprofile
-profile.cov
+/backend/*.out
+/backend/coverage.*
+/backend/*.coverprofile
+/backend/profile.cov
 
 # Dependency directories (remove the comment below to include it)
 # vendor/
 
 # Go workspace file
-go.work
-go.work.sum
+/backend/go.work
+/backend/go.work.sum
 
 # env file
-.env
+/backend/.env
 
 # Editor/IDE
 # .idea/
-# .vscode/
+.vscode/
+
+# -------------------------------------------------------------------------------------------------------
+
+
+# FRONTEND
+
+# env file
+/frontend/.env
+/frontend/node_modules
+
+# Logs
+/frontend/logs
+/frontend/*.log
+/frontend/npm-debug.log*
+/frontend/yarn-debug.log*
+/frontend/yarn-error.log*
+/frontend/pnpm-debug.log*
+/frontend/lerna-debug.log*
+
+/frontend/node_modules
+/frontend/.DS_Store
+/frontend/dist
+/frontend/dist-ssr
+/frontend/coverage
+/frontend/*.local
+
+# Editor directories and files
+/frontend/.vscode/*
+/frontend/!.vscode/extensions.json
+/frontend/.idea
+/frontend/*.suo
+/frontend/*.ntvs*
+/frontend/*.njsproj
+/frontend/*.sln
+/frontend/*.sw?
+
+/frontend/*.tsbuildinfo
+
+/frontend/.eslintcache
+
+# Cypress
+/frontend//cypress/videos/
+/frontend//cypress/screenshots/
+
+# Vitest
+/frontend/__screenshots__/
+
+# Vite
+/frontend/*.timestamp-*-*.mjs
